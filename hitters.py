@@ -1,4 +1,4 @@
-POSITIONS = ['C', '1B', '2B', '3B','SS', 'LF', 'RF', 'CF', 'DH', 'SP', 'RP']
+POSITIONS = ['C', '1B', '2B', '3B', 'SS', 'LF', 'RF', 'CF', 'DH', 'SP', 'RP']
 
 
 class Player:
