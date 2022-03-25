@@ -66,16 +66,17 @@ def get_players(offset=0, limit=-1):
     players = data['players']  # list of players
     for player in players:
         if 22 in player['player']['eligibleSlots']:  # these are minor leaguers or something
-            return  # it is sorted per ranking, so it's safe to leave here
+            # return  # it is sorted per ranking, so it's safe to leave here
+            player['player']['eligibleSlots'].remove(22)
         yield ESPNPlayer(player['player']['fullName'], player['id'], player['player']['eligibleSlots'])
 
 
 def write_all_players_to_csv():
-    with open('espn_map.csv', 'w', newline='') as f:
+    with open('espn_map.csv', 'w', newline='', encoding='utf-8-sig') as f:
         writer = csv.writer(f)
         writer.writerow(['id', 'name', 'positions'])
         for player in get_players():
             writer.writerow([player.player_id, player.name, ','.join(player.positions)])
 
 
-write_all_players_to_csv()
+# write_all_players_to_csv()
